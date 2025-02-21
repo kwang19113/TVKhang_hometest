@@ -29,3 +29,5 @@ All services are containerized using Docker Compose for an easy-to-set-up develo
 git clone kwang19113/TVKhang_hometest
 cd TVKhang_hometest
 docker-compose up
+```
+- **Default Address**: 127.0.0.1:3000
