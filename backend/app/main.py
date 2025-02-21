@@ -56,9 +56,9 @@ def get_search_result(num_people: int = None, date: datetime = None):
     return records
 
 @app.get("/history/")
-def get_history( limit: int = 10):
+def get_history(offset:int = 0, limit: int = 10):
     db = SessionLocal()
-    records = crud.get_records(db, limit=limit)
+    records = crud.get_records(db,offset=offset,limit=limit)
     db.close()
     return records
 

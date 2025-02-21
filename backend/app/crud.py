@@ -8,11 +8,12 @@ def create_record(db: Session, record: schemas.DetectionRecordCreate):
     db.refresh(db_record)
     return db_record
 
-def get_records(db: Session, limit: int = 100):
-    query = db.query(models.DetectionRecord).order_by(models.DetectionRecord.timestamp.desc())
-    if limit == 0:
-        return query.all()
-    return query.limit(limit).all()
+def get_records(db: Session, offset: int = 0, limit: int = 100):
+    return db.query(models.DetectionRecord)\
+             .order_by(models.DetectionRecord.timestamp.desc())\
+             .offset(offset)\
+             .limit(limit)\
+             .all()
 
 def search_detection_records(db: Session, num_people: int = None, date: datetime = None):
     query = db.query(models.DetectionRecord)

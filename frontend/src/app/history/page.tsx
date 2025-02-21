@@ -21,6 +21,7 @@ const History: React.FC = () => {
   // State for filter inputs
   const [filterNumPeople, setFilterNumPeople] = useState<string>("");
   const [filterDate, setFilterDate] = useState<string>("");
+  const offset = (page - 1) * limit;
 
   // State for applied (active) filters
   const [appliedNumPeople, setAppliedNumPeople] = useState<string>("");
@@ -49,7 +50,7 @@ const History: React.FC = () => {
         url = url.slice(0, -1);
       }
     } else {
-      url = `${apiUrl}/history/?limit=${limit}`;
+      url = `${apiUrl}/history/?offset=${offset}&limit=${limit}`;
     }
 
     fetch(url, {
